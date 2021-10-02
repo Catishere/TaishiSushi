@@ -1,10 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
-    gap:3em;
-    display: grid;
-    grid-template-columns: 21.6vw 21.6vw 21.6vw;
-    justify-content: center;
-    margin: 3%;
-    /* margin-left: 30%; */
-`
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+`;

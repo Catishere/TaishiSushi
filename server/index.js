@@ -1,25 +1,38 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const {PORT} = require('./config/config')
-const cors = require('cors');
-const db = require('./config/mongoose')
-const router = require('./routes');
-const { auth } = require('./midlewarse/auth');
-const cookieParser = require('cookie-parser');
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const router = require("./routes");
+const { auth } = require("./midlewarse/auth");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 const app = express();
 
-
-app.use(cors({credentials: true})); 
+app.use(cors({ credentials: true }));
 app.use(cookieParser());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(auth());
 app.use(router);
 
-db().then(() => {
-    console.log('Connected to database!');
-    app.listen(PORT, console.log.bind(console, `Server is listening on port ${PORT}...`));
-})
-
+mongoose
+  .connect(process.env.DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => {
+    console.log("Connected to database!");
+    app.listen(
+      process.env.PORT,
+      console.log.bind(
+        console,
+        `Server is listening on port ${process.env.PORT}...`
+      )
+    );
+  })
+  .catch((err) => {
+    console.log(err);
+  });
