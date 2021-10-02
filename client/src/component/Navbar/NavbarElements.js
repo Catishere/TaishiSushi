@@ -12,7 +12,7 @@ export const Container = styled.div`
   overflow: hidden;
   backdrop-filter: blur(5px);
 
-  @media only screen and (max-width: 475px) {
+  @media only screen and (max-width: 520px) {
     flex-direction: column;
   }
 `;
@@ -24,7 +24,7 @@ export const Nav = styled.nav`
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  @media only screen and (max-width: 475px) {
+  @media only screen and (max-width: 520px) {
     flex-direction: column;
   }
 `;
@@ -36,7 +36,7 @@ export const NavUser = styled.nav`
   padding: 0 5px;
   flex-wrap: nowrap;
   justify-content: center;
-  @media only screen and (max-width: 475px) {
+  @media only screen and (max-width: 520px) {
     flex-direction: column;
   }
 `;
