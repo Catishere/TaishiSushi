@@ -3,41 +3,49 @@ import { NavLink as Link } from "react-router-dom";
 
 export const Container = styled.div`
   display: flex;
+  flex-wrap: nowrap;
+  padding: 0 5px;
+  flex-direction: row;
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
-  position: -webkit-sticky;
-  position: sticky;
   z-index: 1;
   backdrop-filter: blur(5px);
+
+  @media only screen and (max-width: 475px) {
+    flex-direction: column;
+  }
 `;
 
 export const Nav = styled.nav`
   flex: 2;
+  margin-top: 10px;
+  padding: 0 5px;
+  display: flex;
+  flex-wrap: nowrap;
   justify-content: flex-start;
-  position: sticky;
-
-  width: 100%;
-  left: 51px;
-  margin-top: 1.5%;
+  @media only screen and (max-width: 475px) {
+    flex-direction: column;
+  }
 `;
 
 export const NavUser = styled.nav`
   flex: 1;
+  margin-top: 10px;
+  display: flex;
+  padding: 0 5px;
+  flex-wrap: nowrap;
   justify-content: center;
-
-  width: 100%;
-  left: 51px;
-  margin-top: 1.5%;
-  margin-right: 1em;
+  @media only screen and (max-width: 475px) {
+    flex-direction: column;
+  }
 `;
 
 export const NavLogo = styled.nav`
   flex: 1;
+  display: flex;
+  padding: 0 5px;
+  flex-wrap: nowrap;
   justify-content: left;
-
-  position: sticky;
-  margin-left: 0.5%;
-  margin-top: 0.5%;
 `;
 
 export const NavLink = styled(Link)`
@@ -45,32 +53,19 @@ export const NavLink = styled(Link)`
 
   font-style: light;
   font-weight: normal;
-  font-size: 0.8em;
-
-  line-height: 2rem;
-  align-items: left;
+  font-size: 0.8rem;
+  margin: 10px;
   text-decoration: none;
   cursor: pointer;
-  padding-left: 2em;
   height: 50px;
-
-  @media screen and (max-width: 400px) {
-    position: absolute;
-    top: 10px;
-    left: 25px;
-  }
 `;
 
 export const logo = styled(Link)`
-  position: sticky;
   width: 152px;
   height: 60.27px;
-  left: 51px;
-  top: 31.73px;
   cursor: pointer;
 `;
 
 export const IconCart = styled.i`
-color: white;
-
-`
+  color: white;
+`;
