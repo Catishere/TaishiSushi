@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 
 export const Container = styled.div`
+  position: relative;
+  z-index: 999;
   display: flex;
   flex-wrap: nowrap;
   padding: 0 5px;
   flex-direction: row;
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
-  z-index: 1;
   backdrop-filter: blur(5px);
 
   @media only screen and (max-width: 475px) {
