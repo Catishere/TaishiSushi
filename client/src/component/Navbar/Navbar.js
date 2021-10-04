@@ -1,16 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../services/Logout";
 
 //Styles
-import {
-  NavLink,
-  Nav,
-  NavUser,
-  NavLogo,
-  Container,
-  IconCart,
-} from "./NavbarElements";
+import { NavLink, Nav, NavUser, NavLogo, Container } from "./NavbarElements";
 import { ReactComponent as Logo } from "../../resources/Logo.svg";
 
 //Contexts
@@ -63,7 +56,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink to="/profile">{user.username}</NavLink>
             <NavLink to="/cart">
-              <i class="fas fa-shopping-cart" /> ({items.length})
+              <i className="fas fa-shopping-cart" /> ({items.length})
             </NavLink>
           </>
         ) : (

@@ -36,11 +36,10 @@ function Tilt(props) {
 
 //Component
 export const SushiProducts = ({ id, title, imageUrl, portion, price }) => {
-  const [user, setUser] = useContext(Context);
+  const [user] = useContext(Context);
   const [qty, setQty] = useState(1);
   const sushiData = { id, title, imageUrl, price };
   const dispatch = useDispatchCart();
-
   const addToCart = (sushi, userId, currQty) => {
     dispatch({ type: "ADD", sushi });
     pushToCart(sushi, userId, currQty).then((response) =>
@@ -65,6 +64,10 @@ export const SushiProducts = ({ id, title, imageUrl, portion, price }) => {
     setQty(qty + 1);
   };
 
+  const qtyOnChange = (e) => {
+    setQty(e.target.value);
+  };
+
   return (
     <CardContainer>
       <Tilt options={options}>
@@ -77,7 +80,7 @@ export const SushiProducts = ({ id, title, imageUrl, portion, price }) => {
           <SetPortion>{portion}</SetPortion>
           <QtyContainer>
             <Decrement onClick={decrement}>-</Decrement>
-            <SetQty value={qty}></SetQty>
+            <SetQty value={qty} onChange={(e) => qtyOnChange(e)}></SetQty>
             <Increment onClick={increment}>+</Increment>
           </QtyContainer>
           <CartBtn onClick={() => addToCart(sushiData, user._id, qty)}>

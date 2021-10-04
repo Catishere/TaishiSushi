@@ -10,7 +10,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { useDispatchCart } from "../../../Context/CartContext";
 
 const Cart = () => {
-  const [user, setUser] = useContext(Context);
+  const [user] = useContext(Context);
   const [cart, setCart] = useState([]);
   const dispatch = useDispatchCart();
 
@@ -22,7 +22,7 @@ const Cart = () => {
         setCart(res);
       })
       .catch((error) => console.log(error.message));
-  }, []);
+  }, [user]);
 
   //Delete product from cart -----------------------------------------------
   const deleteHandler = (sushiId, userId) => {
@@ -44,7 +44,7 @@ const Cart = () => {
               <td>
                 <img
                   src={sushi.imageUrl}
-                  alt="Product Image"
+                  alt="Product"
                   width="80"
                   height="55"
                 ></img>

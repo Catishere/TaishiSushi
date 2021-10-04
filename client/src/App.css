@@ -7,17 +7,14 @@ html {
 }
 
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 body {
   margin: 0;
   padding: 0;
-  min-width: 100vw;
-  min-height: 100vh;
   /* background-image: url(./resources/nakaji3.jpg);
   background-repeat: no-repeat;
   background-position: top;
   background-size: 100% 52%; */
-  
 }

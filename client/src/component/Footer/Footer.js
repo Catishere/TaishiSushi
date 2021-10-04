@@ -1,13 +1,10 @@
-import React from 'react';
-import {FooterEl, H3} from './FooterElements';
+import React from "react";
+import { FooterEl } from "./FooterElements";
 
-export default function Footer () {
-    return (
-        <>
-        <FooterEl>
-            © 2021 - Taishi Sushi - All Rights Reserved.
-        </FooterEl>
-            
-        </>
-    )
+export default function Footer() {
+  return (
+    <>
+      <FooterEl>© 2021 - Taishi Sushi - All Rights Reserved.</FooterEl>
+    </>
+  );
 }

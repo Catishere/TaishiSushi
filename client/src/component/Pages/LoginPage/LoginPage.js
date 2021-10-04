@@ -8,13 +8,12 @@ import {
   Label,
 } from "./LoginElements";
 
-import { auth } from "../../../utils/firebase";
 import { Context } from "../../../Context/UserContext";
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useContext(Context);
+  const [, setUser] = useContext(Context);
 
   const onLoginFormSubmitHandler = (e) => {
     e.preventDefault();

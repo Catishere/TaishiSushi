@@ -1,26 +1,25 @@
 import styled, { keyframes } from "styled-components";
 
-
 export const HeroContainer = styled.div`
   top: 0%;
+  width: 100%;
   position: absolute;
   justify-content: center;
-  align-items:center;
-  text-align:center;
-  color: #E1B486;
-  
+  align-items: center;
+  text-align: center;
+  color: #e1b486;
+
   background: rgba(0, 0, 0, 0.8);
-  
+
   transform: translate(-50% -50%);
   /* z-index: 0; */
-  `;
+`;
 
 export const HeroImg = styled.img`
-    width: 100vw;
-    height:100%;
-    object-fit: cover;
-    
-  `
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
 
 const text = keyframes`
   0% {
@@ -35,7 +34,7 @@ const text = keyframes`
     letter-spacing: .3rem;
     margin-bottom: -16%;
   }
-`
+`;
 
 export const WelcomeIn = styled.p`
   font-size: 3rem;
@@ -45,13 +44,12 @@ export const WelcomeIn = styled.p`
   /* left: 7%; */
   /* margin-top: 15%;
   margin-bottom: -1%; */
-  text-align:center;
+  text-align: center;
   /* padding-top: 3%; */
   letter-spacing: 3px;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(30px);
   animation: ${text} 3s 1;
-
 `;
 
 export const Name = styled.p`
@@ -60,5 +58,4 @@ export const Name = styled.p`
   font-style: italic;
   width: 100%;
   height: 52px;
-
 `;

@@ -11,7 +11,7 @@ export const SelectedType = ({ match }) => {
     getSushiType(typeOfSushi)
       .then((res) => setSushi(res))
       .catch((error) => console.log(error.message));
-  }, []);
+  }, [typeOfSushi]);
 
   return (
     <Container>

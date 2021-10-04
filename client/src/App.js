@@ -1,7 +1,7 @@
 import "./App.css";
 
-import { useEffect, useState, useContext } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { useEffect, useContext } from "react";
+import { Route, Switch } from "react-router-dom";
 import { getUser } from "./services/getUser";
 import { Context } from "./Context/UserContext";
 
@@ -16,10 +16,8 @@ import SelectedType from "./component/Pages/Menu/SelectedType/SelectedType";
 import Details from "./component/Pages/Details/Details";
 import Footer from "./component/Footer/Footer";
 
-import ImgBg from "./resources/Background.png";
-
 function App() {
-  const [user, setUser] = useContext(Context);
+  const [, setUser] = useContext(Context);
 
   useEffect(() => {
     getUser()
