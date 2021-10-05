@@ -73,21 +73,21 @@ export const SushiProducts = ({ id, title, imageUrl, portion, price }) => {
       <Tilt options={options}>
         <Card to={`/menu/details/${id}`}>
           <SetImage src={imageUrl} alt={`${title}`} />
+          <SetPrice>{`${price.toFixed(2)} BGN`}</SetPrice>
         </Card>
-        <SetPrice>{`${price.toFixed(2)} BGN`}</SetPrice>
-        <SetTitle> {title} </SetTitle>
-        <CardDetailsContainer>
-          <SetPortion>{portion}</SetPortion>
-          <QtyContainer>
-            <Decrement onClick={decrement}>-</Decrement>
-            <SetQty value={qty} onChange={(e) => qtyOnChange(e)}></SetQty>
-            <Increment onClick={increment}>+</Increment>
-          </QtyContainer>
-          <CartBtn onClick={() => addToCart(sushiData, user._id, qty)}>
-            Add
-          </CartBtn>
-        </CardDetailsContainer>
       </Tilt>
+      <SetTitle> {title} </SetTitle>
+      <CardDetailsContainer>
+        <SetPortion>{portion}</SetPortion>
+        <QtyContainer>
+          <Decrement onClick={decrement}>-</Decrement>
+          <SetQty value={qty} onChange={(e) => qtyOnChange(e)}></SetQty>
+          <Increment onClick={increment}>+</Increment>
+        </QtyContainer>
+        <CartBtn onClick={() => addToCart(sushiData, user._id, qty)}>
+          Add
+        </CartBtn>
+      </CardDetailsContainer>
     </CardContainer>
   );
 };
