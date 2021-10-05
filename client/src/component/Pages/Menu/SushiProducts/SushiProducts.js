@@ -96,7 +96,7 @@ export const SushiProducts = ({ id, title, imageUrl, portion, price }) => {
       </Tilt>
       <SetTitle> {title} </SetTitle>
       <CardDetailsContainer>
-        <SetPortion>{portion}</SetPortion>
+        <SetPortion>{portion} g</SetPortion>
         <QtyContainer>
           <Decrement onClick={decrement}>-</Decrement>
           <SetQty value={qty} onChange={(e) => qtyOnChange(e)}></SetQty>

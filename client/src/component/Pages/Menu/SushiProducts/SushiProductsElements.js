@@ -86,7 +86,7 @@ export const SetQty = styled.input`
   width: 20px;
   height: 100%;
   font-size: 18px;
-  font-align: center;
+  text-align: center;
   border: none;
   /* background-color: whitesmoke; */
   color: darkgray;
