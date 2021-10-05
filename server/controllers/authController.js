@@ -15,7 +15,7 @@ router.get("/isAuthenticated", (req, res) => {
   if (user) {
     res.json(user);
   } else {
-    res.json({ message: "No user found" });
+    res.status(404).json();
   }
 });
 

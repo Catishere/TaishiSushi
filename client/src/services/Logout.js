@@ -1,5 +1,6 @@
-export const logout = () => {
-  return fetch("/auth/logout")
-    .then((res) => res.json())
-    .then((data) => data);
+export const logout = async () => {
+  const result = await fetch("/auth/logout");
+  const json = await result.json();
+  localStorage.removeItem("user");
+  return json;
 };

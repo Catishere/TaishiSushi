@@ -26,7 +26,9 @@ const Login = ({ history }) => {
       .then((res) => res.json())
       .then((response) => {
         if (response.message) throw new Error(response.message);
-        setUser({ _id: response._id, username: response.username });
+        const newUser = { _id: response._id, username: response.username };
+        setUser(newUser);
+        localStorage.setItem("user", JSON.stringify(newUser));
         history.push("/");
       })
       .catch((err) => {

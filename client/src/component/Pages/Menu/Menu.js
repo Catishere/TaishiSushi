@@ -1,5 +1,3 @@
-
-
 import {
   GridContainer,
   CardType1,
@@ -8,37 +6,34 @@ import {
   CardType4,
   CardType5,
   CardType6,
-  LinkTo
+  LinkTo,
 } from "./MenuElements";
 
 export const Menu = () => {
-
-     
-
   return (
     <GridContainer>
       <CardType6>
-        <LinkTo to='/menu/sets'>Set</LinkTo>
+        <LinkTo to="/menu/sets">Set</LinkTo>
       </CardType6>
 
       <CardType1>
-        <LinkTo to='/menu/futomaki'>Futomaki</LinkTo>
+        <LinkTo to="/menu/futomaki">Futomaki</LinkTo>
       </CardType1>
 
       <CardType2>
-        <LinkTo to='/menu/hosomaki'>Hosomaki</LinkTo>
+        <LinkTo to="/menu/hosomaki">Hosomaki</LinkTo>
       </CardType2>
 
       <CardType3>
-        <LinkTo to='/menu/nigiri'>Nigiri</LinkTo>
+        <LinkTo to="/menu/nigiri">Nigiri</LinkTo>
       </CardType3>
 
       <CardType4>
-        <LinkTo to='/menu/uramaki'>Uramaki</LinkTo>
+        <LinkTo to="/menu/uramaki">Uramaki</LinkTo>
       </CardType4>
 
       <CardType5>
-        <LinkTo to='/menu/sashimi '>Sashimi</LinkTo>
+        <LinkTo to="/menu/sashimi ">Sashimi</LinkTo>
       </CardType5>
     </GridContainer>
   );
