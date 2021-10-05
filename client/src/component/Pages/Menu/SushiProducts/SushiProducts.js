@@ -42,12 +42,10 @@ export const SushiProducts = ({ id, title, imageUrl, portion, price }) => {
   const sushiData = { id, title, imageUrl, price };
   const dispatch = useDispatchCart();
 
-  const addToCart = (sushi, userId, currQty) => {
-    addNotification(sushi, currQty);
-    dispatch({ type: "ADD", sushi });
-    pushToCart(sushi, userId, currQty).then((response) =>
-      console.log(response)
-    );
+  const addToCart = (sushi, userId, qty) => {
+    addNotification(sushi, qty);
+    dispatch({ type: "ADD", sushi: { ...sushi, qty } });
+    pushToCart(sushi, userId, qty).then((response) => console.log(response));
   };
 
   const addNotification = (sushi, currQty) => {

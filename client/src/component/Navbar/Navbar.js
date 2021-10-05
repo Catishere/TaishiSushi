@@ -56,7 +56,13 @@ const Navbar = () => {
             </NavLink>
             <NavLink to="/profile">{user.username}</NavLink>
             <NavLink to="/cart">
-              <i className="fas fa-shopping-cart" /> ({items.length})
+              <i className="fas fa-shopping-cart" /> (
+              {items
+                .reduce((sum, a) => {
+                  return sum + a.price * a.qty;
+                }, 0)
+                .toFixed(2)}{" "}
+              BGN)
             </NavLink>
           </>
         ) : (
