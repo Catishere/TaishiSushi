@@ -31,8 +31,6 @@ export const SetImage = styled.img`
   border-radius: 20px 20px 20px 0;
   max-width: 100%;
   max-height: 100%;
-  min-width: 260px;
-  min-height: 130px;
   z-index: 10;
 `;
 
@@ -41,7 +39,8 @@ export const SetPrice = styled.h4`
   bottom: -10px;
   left: -5px;
   width: 100px;
-  font-size: 18px;
+  font-size: 15px;
+  padding: 2px;
   background-color: #9f3434;
   border-radius: 8px;
   color: whitesmoke;
