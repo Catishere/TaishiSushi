@@ -15,6 +15,8 @@ import Cart from "./component/Pages/Cart/Cart";
 import SelectedType from "./component/Pages/Menu/SelectedType/SelectedType";
 import Details from "./component/Pages/Details/Details";
 import Footer from "./component/Footer/Footer";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 
 function App() {
   const [, setUser] = useContext(Context);
@@ -29,6 +31,7 @@ function App() {
 
   return (
     <div name="App">
+      <ReactNotification className="cart-notif" />
       <Navbar />
       <Switch>
         <Route path="/" exact component={HomePage} />

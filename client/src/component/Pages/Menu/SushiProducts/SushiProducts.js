@@ -5,6 +5,7 @@ import { pushToCart } from "../../../../services/sushiService";
 //Context
 import { useDispatchCart } from "../../../../Context/CartContext";
 import { Context } from "../../../../Context/UserContext";
+import { store } from "react-notifications-component";
 
 //Styles
 import {
@@ -40,11 +41,28 @@ export const SushiProducts = ({ id, title, imageUrl, portion, price }) => {
   const [qty, setQty] = useState(1);
   const sushiData = { id, title, imageUrl, price };
   const dispatch = useDispatchCart();
+
   const addToCart = (sushi, userId, currQty) => {
+    addNotification(sushi, currQty);
     dispatch({ type: "ADD", sushi });
     pushToCart(sushi, userId, currQty).then((response) =>
       console.log(response)
     );
+  };
+
+  const addNotification = (sushi, currQty) => {
+    store.addNotification({
+      title: "You've added sushi to the cart.",
+      message: `${currQty} ${sushi.title} have been added.`,
+      type: "info",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 3000,
+      },
+    });
   };
 
   //Tilt options
