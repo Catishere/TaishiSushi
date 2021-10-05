@@ -56,7 +56,7 @@ export const SushiProducts = ({ id, title, imageUrl, portion, price }) => {
       message: `${currQty} ${sushi.title} have been added.`,
       type: "info",
       insert: "top",
-      container: "top-right",
+      container: "bottom-right",
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
