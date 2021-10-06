@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 
 //UserContext
 import { Context } from "../../../Context/UserContext";
@@ -7,29 +7,28 @@ import { Context } from "../../../Context/UserContext";
 import { getUserCart, deleteFromCart } from "../../../services/sushiService";
 
 import { TiDeleteOutline } from "react-icons/ti";
-import { useDispatchCart } from "../../../Context/CartContext";
+import { useCart, useDispatchCart } from "../../../Context/CartContext";
 
 import { Container, Table } from "./CartStyles";
 
 const Cart = () => {
   const [user] = useContext(Context);
-  const [cart, setCart] = useState([]);
+  const cart = useCart();
   const dispatch = useDispatchCart();
 
   //Getting user cart array------------------------------------------------
   useEffect(() => {
     getUserCart(user._id)
       .then((res) => {
-        console.log(res);
-        setCart(res);
+        dispatch({ type: "UPDATE", sushi: res });
       })
       .catch((error) => console.log(error.message));
-  }, [user]);
+  }, [user, dispatch]);
 
   //Delete product from cart -----------------------------------------------
   const deleteHandler = (sushiId, userId) => {
     dispatch({ type: "REMOVE", sushiId });
-    deleteFromCart(sushiId, userId).then((cart) => setCart(cart));
+    deleteFromCart(sushiId, userId);
   };
 
   return (

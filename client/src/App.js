@@ -17,9 +17,12 @@ import Details from "./component/Pages/Details/Details";
 import Footer from "./component/Footer/Footer";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
+import { getUserCart } from "./services/sushiService";
+import { useDispatchCart } from "./Context/CartContext";
 
 function App() {
-  const [, setUser] = useContext(Context);
+  const [user, setUser] = useContext(Context);
+  const dispatch = useDispatchCart();
 
   useEffect(() => {
     getUser()
@@ -29,6 +32,14 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, [setUser]);
+
+  useEffect(() => {
+    getUserCart(user._id)
+      .then((res) => {
+        dispatch({ type: "UPDATE", sushi: res });
+      })
+      .catch((error) => console.log(error.message));
+  }, [user, dispatch]);
 
   return (
     <div name="App">

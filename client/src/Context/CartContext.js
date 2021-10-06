@@ -9,6 +9,8 @@ const reducer = (state, action) => {
       return [...state, action.sushi];
     case "REMOVE":
       return state.filter((sushi) => sushi.id !== action.sushiId);
+    case "UPDATE":
+      return action.sushi;
     default:
       throw new Error(`unknown action ${action.type}`);
   }
