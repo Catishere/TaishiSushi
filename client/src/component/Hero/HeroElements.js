@@ -19,6 +19,7 @@ export const HeroImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 2 !important;
 `;
 
 const text = keyframes`
@@ -50,6 +51,7 @@ export const WelcomeIn = styled.p`
 export const Name = styled.p`
   font-size: 36px;
   margin: 0 !important;
+  z-index: 5 !important;
   font-style: italic;
   width: 100%;
 `;

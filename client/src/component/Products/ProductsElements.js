@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const ProductsContainer = styled.div`
   width: 100%;
   background-color: #100c0b;
-  padding-top: 20px;
+  padding: 20px 10px;
   color: #fff;
 `;
 
@@ -16,13 +16,12 @@ export const ProductWrapper = styled.div`
 `;
 export const ProductCard = styled.div`
   line-height: 2;
-  width: 300px;
+  min-width: 250px;
 `;
 
 export const ProductImg = styled.img`
   height: 230px;
-  min-width: 300px;
-  width: 100%;
+  width: 95%;
   border-radius: 20px;
   box-shadow: 6px 6px #e1b486;
   object-fit: cover;
@@ -34,7 +33,7 @@ export const ProductImg = styled.img`
 `;
 
 export const ProductsHeading = styled.h1`
-  font-size: clamp(2rem, 2.5vw, 3rem);
+  font-size: 1.7rem;
   text-align: center;
   color: #e1b486;
 `;
