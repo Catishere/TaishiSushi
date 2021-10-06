@@ -10,7 +10,6 @@ export const Container = styled.div`
   left: 0;
   display: flex;
   flex-wrap: nowrap;
-  padding: 0 5px;
   flex-direction: row;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);

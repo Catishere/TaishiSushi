@@ -26,8 +26,12 @@ export const Background = styled.div`
     )
     no-repeat top right;
 
-  @media only screen and (max-width: 520px) {
+  @media only screen and (max-width: 580px) {
     padding-top: 130px;
+  }
+
+  @media only screen and (max-width: 636px) {
+    height: auto;
   }
 `;
 

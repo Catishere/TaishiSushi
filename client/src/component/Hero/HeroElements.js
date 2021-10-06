@@ -23,24 +23,22 @@ export const HeroImg = styled.img`
 `;
 
 const text = keyframes`
-  0% {
-    color:rgba(0, 0, 0, 0.6);
-    margin-bottom: -16%;
-  }
-  30%{
-    letter-spacing: .rem;
-    margin-bottom: -16%;
+  30% {
+    color:rgba(0, 0, 0, 0.6)
+    padding-top: 90px;
+    transform: translate(0, 90px);
   }
   80%{
     letter-spacing: .3rem;
-    margin-bottom: -16%;
+    padding-top: 0px;
   }
 `;
 
-export const WelcomeIn = styled.p`
+export const Welcome = styled.p`
   font-size: 3rem;
   position: relative;
-  width: 85%;
+  margin: 0;
+  width: 100%;
   text-align: center;
   letter-spacing: 2px;
   background: rgba(0, 0, 0, 0.6);
