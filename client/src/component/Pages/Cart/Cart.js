@@ -9,6 +9,8 @@ import { getUserCart, deleteFromCart } from "../../../services/sushiService";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useDispatchCart } from "../../../Context/CartContext";
 
+import { Container, Table } from "./CartStyles";
+
 const Cart = () => {
   const [user] = useContext(Context);
   const [cart, setCart] = useState([]);
@@ -31,8 +33,8 @@ const Cart = () => {
   };
 
   return (
-    <>
-      <table>
+    <Container>
+      <Table>
         <thead>
           <tr>
             <th colSpan="4">Shopping Cart</th>
@@ -60,8 +62,8 @@ const Cart = () => {
             </tr>
           </tbody>
         ))}
-      </table>
-    </>
+      </Table>
+    </Container>
   );
 };
 

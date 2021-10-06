@@ -58,7 +58,7 @@ export const SetPortion = styled.h5`
   display: inline;
   margin: 5px;
   font-size: 18px;
-  color: darkgray;
+  color: #e1b486;
 `;
 
 export const CartBtn = styled.button`
@@ -88,8 +88,8 @@ export const SetQty = styled.input`
   font-size: 18px;
   text-align: center;
   border: none;
-  /* background-color: whitesmoke; */
-  color: darkgray;
+  background-color: transparent;
+  color: #e1b486;
 `;
 
 export const Decrement = styled.button`
@@ -97,6 +97,8 @@ export const Decrement = styled.button`
   font-size: 18px;
   border-radius: 5px;
   font-align: center;
+  color: #e1b486;
+  background-color: #9f3434;
   width: 30px;
   height: 100%;
   cursor: pointer;
@@ -107,6 +109,8 @@ export const Increment = styled.button`
   font-size: 18px;
   border-radius: 5px;
   font-align: center;
+  color: #e1b486;
+  background-color: #9f3434;
   width: 30px;
   height: 100%;
   cursor: pointer;

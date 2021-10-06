@@ -13,10 +13,6 @@ export const SelectedType = ({ match }) => {
       .catch((error) => console.log(error.message));
   }, [typeOfSushi]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <Container>
       {sushi.map((each) => (
