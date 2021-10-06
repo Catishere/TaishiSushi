@@ -1,9 +1,9 @@
 import styled, { keyframes } from "styled-components";
 
 export const HeroContainer = styled.div`
-  top: 0%;
+  top: 0;
   width: 100%;
-  position: absolute;
+  position: relative;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -38,24 +38,18 @@ const text = keyframes`
 
 export const WelcomeIn = styled.p`
   font-size: 3rem;
-  position: absolute;
+  position: relative;
   width: 85%;
-  height: 9vh;
-  /* left: 7%; */
-  /* margin-top: 15%;
-  margin-bottom: -1%; */
   text-align: center;
-  /* padding-top: 3%; */
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(30px);
   animation: ${text} 3s 1;
 `;
 
 export const Name = styled.p`
-  /* position:absolute; */
   font-size: 36px;
+  margin: 0 !important;
   font-style: italic;
   width: 100%;
-  height: 52px;
 `;

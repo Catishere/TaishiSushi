@@ -13,7 +13,7 @@ export const Card = styled(Link)`
 `;
 
 export const CardContainer = styled.div`
-  min-width: 300px;
+  min-width: 250px;
   font-family: Arial, sans-serif;
   margin: 20px;
 `;

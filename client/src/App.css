@@ -1,5 +1,21 @@
-.app {
-  min-height: calc(100vh - 70px);
+html,
+body,
+#root,
+#root > div {
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body > #root > div {
+  height: 100vh;
 }
 
 html {
@@ -8,15 +24,6 @@ html {
 
 *:focus {
   outline: none;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  /* background-image: url(./resources/nakaji3.jpg);
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: 100% 52%; */
 }
 
 .cart-notif {

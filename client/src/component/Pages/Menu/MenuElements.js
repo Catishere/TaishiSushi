@@ -6,7 +6,6 @@ export const LinkTo = styled(Link)`
   display: block;
   font-style: italic;
   font-weight: 500;
-  margin-top: 20%;
   height: 100%;
   width: 100%;
   font-size: 2em;
@@ -15,65 +14,70 @@ export const LinkTo = styled(Link)`
 
 export const P = styled.p``;
 
-export const GridContainer = styled.div`
-  display: grid;
-  gap: 1em;
-
-  padding-top: 6em;
-  padding-left: 3em;
+export const Background = styled.div`
+  height: 100%;
   width: 100%;
-  height: 85vh;
-  grid-template-columns: 30% 30% 30%;
-  grid-auto-rows: minmax(230px, 260px);
-  justify-content: start;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
+  margin: 0;
+  padding-top: 60px;
   background: linear-gradient(
-    0deg,
-    rgba(125, 56, 87, 1) 0%,
-    rgba(255, 126, 58, 1) 100%
-  );
+      0deg,
+      rgba(125, 56, 87, 1) 0%,
+      rgba(255, 126, 58, 1) 100%
+    )
+    no-repeat top right;
+
+  @media only screen and (max-width: 520px) {
+    padding-top: 130px;
+  }
 `;
 
-export const CardType1 = styled.div`
+export const Container = styled.div`
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Card = styled.div`
+  border-radius: 20px;
+  text-align: center;
+  margin: 5px;
+  height: 200px;
+  width: 300px;
+  @media only screen and (max-width: 350px) {
+    width: 80%;
+  }
+`;
+
+export const CardType1 = styled(Card)`
   background: url(../futomaki/futo_salmon_and_asparages.jpg);
-  background-position: 25% 55%;
-  border-radius: 20px;
-  height: 100%;
+  background-size: cover;
 `;
 
-export const CardType2 = styled.div`
+export const CardType2 = styled(Card)`
   background: url(../hosomaki/hosomaki_tuna.jpg);
-  background-position: 25% 45%;
-  border-radius: 20px;
-  height: 100%;
+  background-size: cover;
 `;
 
-export const CardType3 = styled.div`
+export const CardType3 = styled(Card)`
   background: url(../nigiri/Nigiri-Tuna.jpg);
-  background-position: 33% 55%;
-  border-radius: 20px;
-  height: 100%;
+  background-size: cover;
 `;
 
-export const CardType4 = styled.div`
+export const CardType4 = styled(Card)`
   background: url(../sashimi/Sashimi-Tuna-Tataki.jpg);
-  background-position: 25% 55%;
-  border-radius: 20px;
-  height: 100%;
+  background-size: cover;
 `;
 
-export const CardType5 = styled.div`
+export const CardType5 = styled(Card)`
   background: url(../uramaki/Uramaki-Shrimp-and-Salmon.jpg);
-  background-position: 30% 55%;
-  border-radius: 20px;
-  height: 100%;
+  background-size: cover;
 `;
 
-export const CardType6 = styled.div`
+export const CardType6 = styled(Card)`
   background: url(../hitoshi-set.jpg);
-  background-position: 30% 55%;
-  border-radius: 20px;
-  height: 100%;
+  background-size: cover;
 `;

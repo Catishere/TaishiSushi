@@ -39,11 +39,10 @@ const Navbar = () => {
           </Logo>
         </Link>
       </NavLogo>
-
       <Nav>
-        <NavLink to="/order-now">ORDER NOW</NavLink>
-        <NavLink to="/menu">MENU</NavLink>
-        <NavLink to="/contact-us">CONTACT US</NavLink>
+        <NavLink to="/order-now">Order</NavLink>
+        <NavLink to="/menu">Menu</NavLink>
+        <NavLink to="/contact-us">Contact us</NavLink>
       </Nav>
 
       <NavUser>
@@ -52,7 +51,7 @@ const Navbar = () => {
         {user.username ? (
           <>
             <NavLink to="" onClick={handlerLogout}>
-              LOGOUT
+              Logout
             </NavLink>
             <NavLink to="/profile">{user.username}</NavLink>
             <NavLink to="/cart">
@@ -67,8 +66,8 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <NavLink to="/register">REGISTER</NavLink>
-            <NavLink to="/login">LOGIN</NavLink>
+            <NavLink to="/register">Register</NavLink>
+            <NavLink to="/login">Login</NavLink>
           </>
         )}
       </NavUser>

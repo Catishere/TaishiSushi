@@ -24,7 +24,8 @@ function App() {
   useEffect(() => {
     getUser()
       .then((currentUser) => {
-        setUser({ _id: currentUser._id, username: currentUser.username });
+        if (currentUser)
+          setUser({ _id: currentUser._id, username: currentUser.username });
       })
       .catch((err) => console.log(err));
   }, [setUser]);
