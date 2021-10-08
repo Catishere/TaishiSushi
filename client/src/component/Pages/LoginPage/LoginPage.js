@@ -18,7 +18,7 @@ const Login = ({ history }) => {
   const onLoginFormSubmitHandler = (e) => {
     e.preventDefault();
 
-    fetch("/auth/login", {
+    fetch("/api/auth/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

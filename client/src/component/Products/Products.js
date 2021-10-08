@@ -18,7 +18,11 @@ const Products = ({ heading, match }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5001/")
+    fetch(
+      `${process.env.URL || "http://localhost"}:${
+        process.env.PORT || process.env.REACT_APP_PORT
+      }/api/home`
+    )
       .then((res) => res.json())
       .then((res) => setProducts(res))
       .catch((error) => console.log(error));

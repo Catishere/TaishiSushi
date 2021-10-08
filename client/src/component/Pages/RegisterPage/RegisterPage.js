@@ -20,20 +20,20 @@ const Register = ({ history }) => {
   const onRegisterSubmitHandler = (e) => {
     e.preventDefault();
 
-    
-    fetch("/auth/register", {
+    fetch("/api/auth/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, username, password, address }),
     })
-    .then((res) => res.json())
-    .then((response) => {
-      if (response.message) throw new Error(response.message);
-      setUser({ _id: response._id, username: response.username });
-      history.push("/");
-    }).catch(err => console.log(err.message));
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.message) throw new Error(response.message);
+        setUser({ _id: response._id, username: response.username });
+        history.push("/");
+      })
+      .catch((err) => console.log(err.message));
 
-    if(user.username) <Redirect to='/' /> 
+    if (user.username) <Redirect to="/" />;
   };
 
   return (

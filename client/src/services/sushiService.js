@@ -1,8 +1,9 @@
-const url = `http://localhost:5001/`;
-const urlMenu = `http://localhost:5001/menu/`;
+const uri = `${process.env.URL || "http://localhost"}:${
+  process.env.PORT || process.env.REACT_APP_PORT
+}/`;
 
 export const addSushi = (sushiData) => {
-  return fetch(url + "add", {
+  return fetch(`${uri}api/add`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(sushiData),
@@ -10,7 +11,7 @@ export const addSushi = (sushiData) => {
 };
 
 export const getSushi = (sushiData) => {
-  return fetch(url, {
+  return fetch(`${uri}api/`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(sushiData),
@@ -18,14 +19,14 @@ export const getSushi = (sushiData) => {
 };
 
 export const getSushiType = (sushiType) => {
-  return fetch(urlMenu + `${sushiType}`, {
+  return fetch(`${uri}api/menu/${sushiType}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
 };
 
 export const getSushiDetails = (sushiId) => {
-  return fetch(`${urlMenu}details/${sushiId}`, {
+  return fetch(`${uri}api/menu/details/${sushiId}`, {
     method: "GET",
     headers: { "Content-type": "application-json" },
   }).then((res) => res.json());
@@ -33,7 +34,7 @@ export const getSushiDetails = (sushiId) => {
 
 export const pushToCart = async (sushi, userId, qty) => {
   const test = { ...sushi, userId, qty };
-  const res = await fetch(urlMenu + "add-to-cart", {
+  const res = await fetch(`${uri}api/menu/add-to-cart`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(test),
@@ -42,7 +43,7 @@ export const pushToCart = async (sushi, userId, qty) => {
 };
 
 export const getUserCart = (userId) => {
-  return fetch(`${urlMenu}get-cart/${userId}`, {
+  return fetch(`${uri}api/menu/get-cart/${userId}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   }).then((res) => res.json());
@@ -50,7 +51,7 @@ export const getUserCart = (userId) => {
 
 export const deleteFromCart = (sushiId, userId) => {
   console.log(sushiId, userId);
-  return fetch(urlMenu + "delete-from-cart", {
+  return fetch(`${uri}api/menu/delete-from-cart`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({ sushiId, userId }),

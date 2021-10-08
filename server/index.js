@@ -25,12 +25,10 @@ mongoose
   })
   .then(() => {
     console.log("Connected to database!");
+    const port = process.env.PORT || 5001;
     app.listen(
-      process.env.PORT,
-      console.log.bind(
-        console,
-        `Server is listening on port ${process.env.PORT}...`
-      )
+      port,
+      console.log.bind(console, `Server is listening on port ${port}...`)
     );
   })
   .catch((err) => {

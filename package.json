@@ -1,0 +1,23 @@
+{
+  "name": "taishisushi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "heroku-postbuild": "npm --prefix client run installDep && npm --prefix server run installDep",
+    "start": "cd ./client && npm run build && cd ../server && npm run start"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Catishere/TaishiSushi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Catishere/TaishiSushi/issues"
+  },
+  "homepage": "https://github.com/Catishere/TaishiSushi#readme"
+}
