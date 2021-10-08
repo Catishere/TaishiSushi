@@ -2,8 +2,8 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const { SECRET, COOKIE_NAME } = {
-  SECRET: process.env.SECRET,
-  COOKIE_NAME: process.env.COOKIE_NAME,
+  SECRET: process.env.REACT_APP_SECRET,
+  COOKIE_NAME: process.env.REACT_APP_COOKIE_NAME,
 };
 const { register, login } = require("../services/authService");
 // TODO validations: check if the user exists..., hashing the password with bcrypt, save the user, create jwt token

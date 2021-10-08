@@ -22,7 +22,10 @@ const Register = ({ history }) => {
 
     fetch("/api/auth/register", {
       method: "post",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
       body: JSON.stringify({ email, username, password, address }),
     })
       .then((res) => res.json())

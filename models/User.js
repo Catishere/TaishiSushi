@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const { SECRET, SALT_ROUNDS } = {
-  SECRET: process.env.SECRET,
-  SALT_ROUNDS: process.env.SALT_ROUNDS,
+  SECRET: process.env.REACT_APP_SECRET,
+  SALT_ROUNDS: process.env.REACT_APP_SALT_ROUNDS,
 };
 
 const userScheme = new mongoose.Schema({

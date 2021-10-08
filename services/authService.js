@@ -2,8 +2,8 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { SECRET, SALT_ROUNDS } = {
-  SECRET: process.env.SECRET,
-  SALT_ROUNDS: process.env.SALT_ROUNDS,
+  SECRET: process.env.REACT_APP_SECRET,
+  SALT_ROUNDS: process.env.REACT_APP_SALT_ROUNDS,
 };
 
 const register = async ({ email, username, password, address }) => {

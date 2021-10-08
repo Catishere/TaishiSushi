@@ -20,7 +20,10 @@ const Login = ({ history }) => {
 
     fetch("/api/auth/login", {
       method: "post",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
       body: JSON.stringify({ email, password }),
     })
       .then((res) => res.json())

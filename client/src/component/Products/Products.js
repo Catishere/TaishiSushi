@@ -19,9 +19,15 @@ const Products = ({ heading, match }) => {
 
   useEffect(() => {
     fetch(
-      `${process.env.URL || "http://localhost"}:${
-        process.env.PORT || process.env.REACT_APP_PORT
-      }/api/home`
+      `${process.env.REACT_APP_URL || "http://localhost"}:${
+        process.env.REACT_APP_PORT || 5001
+      }/api/home`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
     )
       .then((res) => res.json())
       .then((res) => setProducts(res))
