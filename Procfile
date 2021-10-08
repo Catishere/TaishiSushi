@@ -1,2 +1,2 @@
-web: node ./server/index.js
-api: cd  ./client && react-scripts start
+web: cd ./client && npm run start
+api: cd ./server && npm run start
