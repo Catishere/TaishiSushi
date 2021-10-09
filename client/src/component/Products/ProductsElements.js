@@ -27,7 +27,7 @@ export const ProductImg = styled.img`
   object-fit: cover;
 
   :hover {
-    width: 120%;
+    transform: scale(1.02);
     box-shadow: 9px 9px 9px 9px black;
   }
 `;

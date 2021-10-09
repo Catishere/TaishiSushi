@@ -1,1 +1,1 @@
-web: REACT_APP_PORT=$PORT node index.js
+web: node index.js

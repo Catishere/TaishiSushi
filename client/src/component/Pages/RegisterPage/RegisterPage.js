@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
 import { Context } from "../../../Context/UserContext";
+import url from "../../../utils/connectionUrl";
 import {
   FormTitle,
   Container,
@@ -20,7 +21,7 @@ const Register = ({ history }) => {
   const onRegisterSubmitHandler = (e) => {
     e.preventDefault();
 
-    fetch("/api/auth/register", {
+    fetch(`${url}/api/auth/register`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

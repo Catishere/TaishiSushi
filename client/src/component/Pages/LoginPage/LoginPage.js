@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import url from "../../../utils/connectionUrl";
 import {
   FormTitle,
   Container,
@@ -18,7 +19,7 @@ const Login = ({ history }) => {
   const onLoginFormSubmitHandler = (e) => {
     e.preventDefault();
 
-    fetch("/api/auth/login", {
+    fetch(`${url}/api/auth/login`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

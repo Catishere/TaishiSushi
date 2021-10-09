@@ -34,9 +34,6 @@ function App() {
   }, [setUser]);
 
   useEffect(() => {
-    console.log(
-      `port ${process.env.PORT} react port ${process.env.REACT_APP_PORT}`
-    );
     getUserCart(user._id)
       .then((res) => {
         dispatch({ type: "UPDATE", sushi: res });

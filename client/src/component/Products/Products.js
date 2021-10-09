@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import url from "../../utils/connectionUrl";
 
 import {
   ProductsContainer,
@@ -18,7 +19,7 @@ const Products = ({ heading, match }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_URL || "http://localhost"}/api/home`, {
+    fetch(`${url}/api/home`, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
