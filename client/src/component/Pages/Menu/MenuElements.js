@@ -57,31 +57,31 @@ export const Card = styled.div`
 `;
 
 export const CardType1 = styled(Card)`
-  background: url(../futomaki/futo_salmon_and_asparages.jpg);
+  background: url(/futomaki/futo_salmon_and_asparages.jpg);
   background-size: cover;
 `;
 
 export const CardType2 = styled(Card)`
-  background: url(../hosomaki/hosomaki_tuna.jpg);
+  background: url(/hosomaki/hosomaki_tuna.jpg);
   background-size: cover;
 `;
 
 export const CardType3 = styled(Card)`
-  background: url(../nigiri/Nigiri-Tuna.jpg);
+  background: url(/nigiri/nigiri_tuna.jpg);
   background-size: cover;
 `;
 
 export const CardType4 = styled(Card)`
-  background: url(../sashimi/Sashimi-Tuna-Tataki.jpg);
+  background: url(/sashimi/sashimi_tuna_tataki.jpg);
   background-size: cover;
 `;
 
 export const CardType5 = styled(Card)`
-  background: url(../uramaki/Uramaki-Shrimp-and-Salmon.jpg);
+  background: url(/uramaki/uramaki_shrimp_and_salmon.jpg);
   background-size: cover;
 `;
 
 export const CardType6 = styled(Card)`
-  background: url(../hitoshi-set.jpg);
+  background: url(/hitoshi_set.jpg);
   background-size: cover;
 `;
