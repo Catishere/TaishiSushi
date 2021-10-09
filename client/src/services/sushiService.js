@@ -1,6 +1,4 @@
-const uri = `${process.env.REACT_APP_URL || "http://localhost"}:${
-  process.env.REACT_APP_PORT || 5001
-}/`;
+const uri = `${process.env.REACT_APP_URL || "http://localhost"}/`;
 
 export const addSushi = (sushiData) => {
   return fetch(`${uri}api/add`, {
