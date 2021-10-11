@@ -10,4 +10,5 @@ export const FooterEl = styled.footer`
   color: #e1b486;
   font-size: 1em;
   text-align: center;
+  user-select: none;
 `;

@@ -18,7 +18,7 @@ export const SelectedType = ({ match }) => {
       {sushi.map((each) => (
         <SushiProducts
           key={each._id}
-          id={each._id}
+          _id={each._id}
           title={each.title}
           imageUrl={each.imageUrl}
           portion={each.portion}

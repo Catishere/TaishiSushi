@@ -6,9 +6,15 @@ const CartDispatchContext = createContext();
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD":
+      if (state.find((e) => e.sushi._id === action.sushi.sushi._id))
+        return state.map((product) => {
+          if (product.sushi._id === action.sushi.sushi._id)
+            product.qty += action.sushi.qty;
+          return product;
+        });
       return [...state, action.sushi];
     case "REMOVE":
-      return state.filter((sushi) => sushi.id !== action.sushiId);
+      return state.filter((product) => product.sushi._id !== action.sushiId);
     case "UPDATE":
       return action.sushi;
     default:

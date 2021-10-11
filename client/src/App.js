@@ -34,11 +34,11 @@ function App() {
   }, [setUser]);
 
   useEffect(() => {
-    getUserCart(user._id)
-      .then((res) => {
-        dispatch({ type: "UPDATE", sushi: res });
-      })
-      .catch((error) => console.log(error.message));
+    if (user && user._id) {
+      getUserCart(user._id).then((userCart) =>
+        dispatch({ type: "UPDATE", sushi: userCart })
+      );
+    }
   }, [user, dispatch]);
 
   return (

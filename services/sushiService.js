@@ -17,32 +17,56 @@ async function getDetails(id) {
   return Sushi.findById(id);
 }
 
-async function addToCart(data) {
-  const user = await User.findById(data.userId);
-  delete data.userId;
+async function getMultiDetails(ids) {
+  return await Sushi.find().where("_id").in(ids).exec();
+}
 
-  const product = user.cart.find((s) => s.title === data.title);
+async function addToCart({ userId, sushiId, qty }) {
+  const user = await User.findById(userId);
+
+  const product = user.cart.find((p) => p.sushi._id == sushiId);
   if (product) {
     user.cart.remove(product);
-    product.qty += data.qty;
-    user.cart.push(product);
+    product.qty = parseInt(product.qty) + parseInt(qty);
+    user.cart.push({ sushi: product.sushi, qty: product.qty });
   } else {
-    user.cart.push(data);
+    user.cart.push({ sushi: sushiId, qty });
   }
   return await user.save();
 }
 
 async function getUserCart(userId) {
-  const user = await User.findById(userId);
+  const user = await User.findById(userId)
+    .populate({
+      path: "cart.sushi",
+      model: "Sushi",
+    })
+    .exec();
 
   return user.cart;
 }
 
 async function deleteFromCart({ sushiId, userId }) {
-  const user = await User.findById(userId);
-  user.cart = user.cart.filter((s) => s.id !== sushiId);
+  const user = await User.findById(userId)
+    .populate({
+      path: "cart.sushi",
+      model: "Sushi",
+    })
+    .exec();
+  user.cart = user.cart.filter((p) => p.sushi._id != sushiId);
 
-  user.save();
+  await user.save();
+  return user.cart;
+}
+
+async function updateInCart({ sushiId, userId, sushi }) {
+  const user = await User.findById(userId);
+  if (!user) return [];
+  const userSushi = user.cart.find((p) => p.sushi._id === sushiId);
+  if (!userSushi) return [];
+  user.cart.remove(userSushi);
+  user.cart.push(sushi);
+  await user.save();
   return user.cart;
 }
 
@@ -51,6 +75,7 @@ module.exports = {
   getNewest,
   getType,
   getDetails,
+  getMultiDetails,
   addToCart,
   getUserCart,
   deleteFromCart,

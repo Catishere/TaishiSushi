@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 const { SECRET, SALT_ROUNDS } = {
   SECRET: process.env.REACT_APP_SECRET,
   SALT_ROUNDS: process.env.REACT_APP_SALT_ROUNDS,
 };
 
-const userScheme = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
@@ -29,11 +30,16 @@ const userScheme = new mongoose.Schema({
     required: true,
   },
 
-  cart: [],
+  cart: [
+    {
+      sushi: { type: Schema.Types.ObjectId, ref: "Sushi" },
+      qty: { type: Number },
+    },
+  ],
   purchaseHistory: [],
 });
 
-userScheme.pre("save", function (next) {
+userSchema.pre("save", function (next) {
   bcrypt
     .genSalt(SALT_ROUNDS)
     .then((salt) => bcrypt.hash(this.password, salt))
@@ -43,4 +49,4 @@ userScheme.pre("save", function (next) {
     });
 });
 
-module.exports = mongoose.model("User", userScheme);
+module.exports = mongoose.model("User", userSchema);

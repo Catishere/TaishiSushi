@@ -18,7 +18,6 @@ export const Details = ({ match }) => {
   useEffect(() => {
     getSushiDetails(sushiId)
       .then((res) => {
-        console.log(res);
         setSushi(res);
       })
       .catch((error) => console.log(error.message));
@@ -34,10 +33,6 @@ export const Details = ({ match }) => {
 
     return <div ref={tilt} {...rest} />;
   }
-
-  const addToCart = (sushi) => {
-    console.log(sushi);
-  };
 
   const options = {
     scale: 1,
@@ -61,7 +56,7 @@ export const Details = ({ match }) => {
           <SushiTitle>{`${sushi.title}`}</SushiTitle>
           <SushiDesc>{`${sushi.description}`}</SushiDesc>
           <SushiPortion>{`${sushi.portion}`}</SushiPortion>
-          <CartBtn onClick={() => addToCart(sushi)}>Add to Cart</CartBtn>
+          <CartBtn>Add to Cart</CartBtn>
         </Container>
       </Tilt>
     </>

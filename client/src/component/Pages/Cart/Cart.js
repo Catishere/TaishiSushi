@@ -4,12 +4,27 @@ import { useEffect, useContext } from "react";
 import { Context } from "../../../Context/UserContext";
 
 //Service
-import { getUserCart, deleteFromCart } from "../../../services/sushiService";
+import {
+  getUserCart,
+  deleteFromCart,
+  pushToCart,
+} from "../../../services/sushiService";
 
-import { TiDeleteOutline } from "react-icons/ti";
+import {
+  AiFillPlusCircle,
+  AiFillMinusCircle,
+  AiFillDelete,
+} from "react-icons/ai";
 import { useCart, useDispatchCart } from "../../../Context/CartContext";
 
-import { Container, Table } from "./CartStyles";
+import {
+  Container,
+  Title,
+  Product,
+  ProductDetail,
+  ProductsContainer,
+  ProductTitle,
+} from "./CartStyles";
 
 const Cart = () => {
   const [user] = useContext(Context);
@@ -18,11 +33,11 @@ const Cart = () => {
 
   //Getting user cart array------------------------------------------------
   useEffect(() => {
-    getUserCart(user._id)
-      .then((res) => {
-        dispatch({ type: "UPDATE", sushi: res });
-      })
-      .catch((error) => console.log(error.message));
+    if (user && user._id) {
+      getUserCart(user._id).then((userCart) =>
+        dispatch({ type: "UPDATE", sushi: userCart })
+      );
+    }
   }, [user, dispatch]);
 
   //Delete product from cart -----------------------------------------------
@@ -31,37 +46,68 @@ const Cart = () => {
     deleteFromCart(sushiId, userId);
   };
 
+  const incrementHandler = async (prod, userId) => {
+    const newProd = JSON.parse(JSON.stringify(prod));
+    newProd.qty++;
+
+    // TODO: change REMOVE + ADD to UPDATE so the items dont rearrange in cart
+    dispatch({ type: "REMOVE", sushiId: prod.sushi._id });
+    dispatch({ type: "ADD", sushi: newProd });
+    await pushToCart(prod.sushi._id, userId, 1);
+  };
+
+  const decrementHandler = async (prod, userId) => {
+    const newProd = JSON.parse(JSON.stringify(prod));
+    if (newProd.qty > 1) {
+      newProd.qty--;
+      dispatch({ type: "REMOVE", sushiId: prod.sushi._id });
+      dispatch({ type: "ADD", sushi: newProd });
+      await pushToCart(prod.sushi._id, userId, -1);
+    }
+  };
   return (
     <Container>
-      <Table>
-        <thead>
-          <tr>
-            <th colSpan="4">Shopping Cart</th>
-          </tr>
-        </thead>
-        {cart.map((sushi) => (
-          <tbody key={sushi.id}>
-            <tr>
-              <td>
-                <img
-                  src={sushi.imageUrl}
-                  alt="Product"
-                  width="80"
-                  height="55"
-                ></img>
-              </td>
-              <td>{sushi.title}</td>
-              <td>{"x" + sushi.qty}</td>
-              <td>{(sushi.price * sushi.qty).toFixed(2) + "BGN"}</td>
-              <td>
-                <button onClick={deleteHandler.bind(this, sushi.id, user._id)}>
-                  <TiDeleteOutline />
-                </button>
-              </td>
-            </tr>
-          </tbody>
+      <Title>Shopping Cart</Title>
+      <ProductsContainer>
+        {cart.map((prod) => (
+          <Product key={prod.sushi._id}>
+            <img
+              src={prod.sushi.imageUrl}
+              alt="Product"
+              width="100"
+              height="70"
+            ></img>
+            <ProductTitle>{prod.sushi.title}</ProductTitle>
+            <ProductDetail>{"x" + prod.qty}</ProductDetail>
+            <ProductDetail>
+              {(prod.sushi.price * prod.qty).toFixed(2) + "BGN"}
+            </ProductDetail>
+            <ProductDetail>
+              <AiFillPlusCircle
+                onMouseOver={({ target }) => (target.style.color = "darkgreen")}
+                onMouseOut={({ target }) => (target.style.color = "green")}
+                style={{ color: "green", cursor: "pointer" }}
+                size="40px"
+                onClick={incrementHandler.bind(this, prod, user._id)}
+              />
+              <AiFillMinusCircle
+                onMouseOver={({ target }) => (target.style.color = "darkred")}
+                onMouseOut={({ target }) => (target.style.color = "red")}
+                style={{ color: "red", cursor: "pointer" }}
+                size="40px"
+                onClick={decrementHandler.bind(this, prod, user._id)}
+              />
+              <AiFillDelete
+                onMouseOver={({ target }) => (target.style.color = "#444444")}
+                onMouseOut={({ target }) => (target.style.color = "#111111")}
+                style={{ color: "#111111", cursor: "pointer" }}
+                size="40px"
+                onClick={deleteHandler.bind(this, prod.sushi._id, user._id)}
+              />
+            </ProductDetail>
+          </Product>
         ))}
-      </Table>
+      </ProductsContainer>
     </Container>
   );
 };

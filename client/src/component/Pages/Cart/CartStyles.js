@@ -1,7 +1,37 @@
 import styled from "styled-components";
 
-export const Table = styled.table``;
+export const ProductsContainer = styled.div`
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+`;
+
+export const Product = styled.div`
+  padding: 10px;
+  min-height: 80px;
+  justify-content: left;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-top: solid 1px lightgrey;
+`;
+
+export const Title = styled.div`
+  margin: 5px 10px;
+`;
 
 export const Container = styled.div`
   padding: 60px 0;
+  width: 100%;
+`;
+
+export const ProductDetail = styled.div`
+  margin: 0 10px;
+  flex: 1;
+`;
+
+export const ProductTitle = styled(ProductDetail)`
+  flex: 3;
 `;

@@ -36,16 +36,16 @@ function Tilt(props) {
 }
 
 //Component
-export const SushiProducts = ({ id, title, imageUrl, portion, price }) => {
+export const SushiProducts = ({ _id, title, imageUrl, portion, price }) => {
   const [user] = useContext(Context);
   const [qty, setQty] = useState(1);
-  const sushiData = { id, title, imageUrl, price };
+  const sushiData = { _id, title, imageUrl, price };
   const dispatch = useDispatchCart();
 
-  const addToCart = (sushi, userId, qty) => {
+  const addToCart = async (sushi, userId, qty) => {
     addNotification(sushi, qty);
-    dispatch({ type: "ADD", sushi: { ...sushi, qty } });
-    pushToCart(sushi, userId, qty).then((response) => console.log(response));
+    dispatch({ type: "ADD", sushi: { sushi, qty } });
+    await pushToCart(sushi._id, userId, qty);
   };
 
   const addNotification = (sushi, currQty) => {
@@ -87,7 +87,7 @@ export const SushiProducts = ({ id, title, imageUrl, portion, price }) => {
   return (
     <CardContainer>
       <Tilt options={options}>
-        <Card to={`/menu/details/${id}`}>
+        <Card to={`/menu/details/${_id}`}>
           <SetImage src={imageUrl} alt={`${title}`} />
           <SetPrice>{`${price.toFixed(2)} BGN`}</SetPrice>
         </Card>
