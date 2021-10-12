@@ -5,6 +5,7 @@ export const ProductsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px;
+  user-select: none;
 `;
 
 export const Product = styled.div`

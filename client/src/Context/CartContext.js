@@ -17,6 +17,12 @@ const reducer = (state, action) => {
       return state.filter((product) => product.sushi._id !== action.sushiId);
     case "UPDATE":
       return action.sushi;
+    case "CHANGE":
+      const index = state.findIndex(
+        (p) => p.sushi._id === action.sushi.sushi._id
+      );
+      if (index >= 0) state[index] = action.sushi;
+      return JSON.parse(JSON.stringify(state));
     default:
       throw new Error(`unknown action ${action.type}`);
   }

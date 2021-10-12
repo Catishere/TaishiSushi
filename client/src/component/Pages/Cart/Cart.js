@@ -47,21 +47,15 @@ const Cart = () => {
   };
 
   const incrementHandler = async (prod, userId) => {
-    const newProd = JSON.parse(JSON.stringify(prod));
-    newProd.qty++;
-
-    // TODO: change REMOVE + ADD to UPDATE so the items dont rearrange in cart
-    dispatch({ type: "REMOVE", sushiId: prod.sushi._id });
-    dispatch({ type: "ADD", sushi: newProd });
+    prod.qty++;
+    dispatch({ type: "CHANGE", sushi: prod });
     await pushToCart(prod.sushi._id, userId, 1);
   };
 
   const decrementHandler = async (prod, userId) => {
-    const newProd = JSON.parse(JSON.stringify(prod));
-    if (newProd.qty > 1) {
-      newProd.qty--;
-      dispatch({ type: "REMOVE", sushiId: prod.sushi._id });
-      dispatch({ type: "ADD", sushi: newProd });
+    if (prod.qty > 1) {
+      prod.qty--;
+      dispatch({ type: "CHANGE", sushi: prod });
       await pushToCart(prod.sushi._id, userId, -1);
     }
   };
@@ -93,7 +87,11 @@ const Cart = () => {
               <AiFillMinusCircle
                 onMouseOver={({ target }) => (target.style.color = "darkred")}
                 onMouseOut={({ target }) => (target.style.color = "red")}
-                style={{ color: "red", cursor: "pointer" }}
+                style={{
+                  cursor: "pointer",
+                  display: prod.qty === 1 ? "none" : "inline-block",
+                }}
+                color={"red"}
                 size="40px"
                 onClick={decrementHandler.bind(this, prod, user._id)}
               />
