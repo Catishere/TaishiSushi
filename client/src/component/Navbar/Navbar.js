@@ -84,11 +84,12 @@ const Navbar = () => {
             <li className="nav-item nav-item-end">
               <Link to="/cart" className="nav-links" onClick={closeMobileMenu}>
                 <i className="fas fa-shopping-cart" /> (
-                {items || items.length !== 0
-                  ? items
-                      .reduce((sum, a) => sum + a.sushi.price * a.qty, 0)
-                      .toFixed(2)
-                  : "0.00"}{" "}
+                {items
+                  .reduce((sum, a) => {
+                    if (!a || !a.sushi || a.sushi.price) return 0;
+                    return sum + a.sushi.price * a.qty;
+                  }, 0)
+                  .toFixed(2)}{" "}
                 BGN)
               </Link>
             </li>
