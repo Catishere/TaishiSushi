@@ -60,7 +60,7 @@ const Navbar = () => {
         </li>
         {user.username ? (
           <>
-            <li className="nav-item">
+            <li className="nav-item nav-item-end">
               <Link
                 to=""
                 className="nav-links"
@@ -72,7 +72,7 @@ const Navbar = () => {
                 Logout
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item nav-item-end">
               <Link
                 to="/profile"
                 className="nav-links"
@@ -81,12 +81,14 @@ const Navbar = () => {
                 {user.username}
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item nav-item-end">
               <Link to="/cart" className="nav-links" onClick={closeMobileMenu}>
                 <i className="fas fa-shopping-cart" /> (
-                {items
-                  .reduce((sum, a) => sum + a.sushi.price * a.qty, 0)
-                  .toFixed(2)}{" "}
+                {items || items.length !== 0
+                  ? items
+                      .reduce((sum, a) => sum + a.sushi.price * a.qty, 0)
+                      .toFixed(2)
+                  : "0.00"}{" "}
                 BGN)
               </Link>
             </li>

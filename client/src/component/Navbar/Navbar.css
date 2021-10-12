@@ -55,6 +55,10 @@ ul {
   hyphens: none;
 }
 
+.nav-item-end {
+  justify-self: end !important;
+}
+
 .nav-links {
   width: 100%;
   height: 100%;
