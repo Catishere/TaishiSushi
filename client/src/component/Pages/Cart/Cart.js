@@ -78,20 +78,20 @@ const Cart = () => {
             </ProductDetail>
             <ProductDetail>
               <AiFillPlusCircle
-                onMouseOver={({ target }) => (target.style.color = "darkgreen")}
-                onMouseOut={({ target }) => (target.style.color = "green")}
-                style={{ color: "green", cursor: "pointer" }}
+                onMouseOver={({ target }) => (target.style.color = "#3d8524")}
+                onMouseOut={({ target }) => (target.style.color = "#2e651a")}
+                style={{ color: "#2e651a", cursor: "pointer" }}
                 size="40px"
                 onClick={incrementHandler.bind(this, prod, user._id)}
               />
               <AiFillMinusCircle
                 onMouseOver={({ target }) => (target.style.color = "darkred")}
-                onMouseOut={({ target }) => (target.style.color = "red")}
+                onMouseOut={({ target }) => (target.style.color = "#7e2525")}
                 style={{
                   cursor: "pointer",
                   display: prod.qty === 1 ? "none" : "inline-block",
                 }}
-                color={"red"}
+                color={"#7e2525"}
                 size="40px"
                 onClick={decrementHandler.bind(this, prod, user._id)}
               />

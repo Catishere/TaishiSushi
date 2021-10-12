@@ -21,9 +21,16 @@ const Navbar = () => {
   };
 
   const checkAdmin = (id) => {
-    const adminId = "60d0f1dcdbc74d4808424e95";
+    const adminId = "6158316cd8ebc525208bfe65";
 
-    if (id === adminId) return <Link to="/add">+ADD</Link>;
+    if (id === adminId)
+      return (
+        <li className="nav-item">
+          <Link to="/add" className="nav-links">
+            Add
+          </Link>
+        </li>
+      );
     return "";
   };
 
@@ -58,9 +65,11 @@ const Navbar = () => {
             Contact us
           </Link>
         </li>
+        <li className="space-item"></li>
         {user.username ? (
           <>
-            <li className="nav-item nav-item-end">
+            {checkAdmin(user._id)}
+            <li className="nav-item">
               <Link
                 to=""
                 className="nav-links"
@@ -72,7 +81,7 @@ const Navbar = () => {
                 Logout
               </Link>
             </li>
-            <li className="nav-item nav-item-end">
+            <li className="nav-item">
               <Link
                 to="/profile"
                 className="nav-links"
@@ -81,9 +90,9 @@ const Navbar = () => {
                 {user.username}
               </Link>
             </li>
-            <li className="nav-item nav-item-end">
+            <li className="nav-item">
               <Link to="/cart" className="nav-links" onClick={closeMobileMenu}>
-                <i className="fas fa-shopping-cart" /> ({console.log(items)}
+                <i className="fas fa-shopping-cart" /> (
                 {items
                   .reduce((sum, a) => {
                     return sum + a.sushi.price * a.qty;
@@ -104,7 +113,7 @@ const Navbar = () => {
                 Register
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item ">
               <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
                 Login
               </Link>

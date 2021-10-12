@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { SECRET, SALT_ROUNDS } = {
   SECRET: process.env.REACT_APP_SECRET,
-  SALT_ROUNDS: process.env.REACT_APP_SALT_ROUNDS,
 };
 
 const register = async ({ email, username, password, address }) => {
@@ -33,6 +32,7 @@ const register = async ({ email, username, password, address }) => {
         "Password must be at least 9 characters long, must have at least 1 symbol, at least 1 uppercase and 1 lowercase.",
     };
 
+  password = await bcrypt.hash(password, 10);
   let user = await new User({ email, username, password, address }).save();
 
   let token = jwt.sign(
@@ -51,12 +51,13 @@ const register = async ({ email, username, password, address }) => {
 
 const login = async ({ email, password }) => {
   let user = await User.findOne({ email });
-  console.log(user);
-  if (user) console.table(user.password);
 
-  if (!user) throw { message: "No such user", status: 404 };
+  if (!user) {
+    user = await User.findOne({ username: email });
+    if (!user) throw { message: "No such user", status: 404 };
+  }
 
-  let areEqual = bcrypt.compare(password, user.password);
+  let areEqual = await bcrypt.compare(password, user.password);
 
   if (!areEqual) throw { message: "Invalid password", status: 404 };
 

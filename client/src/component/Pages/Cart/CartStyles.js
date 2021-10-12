@@ -16,7 +16,7 @@ export const Product = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border-top: solid 1px lightgrey;
+  border-top: solid 1px #1a1717;
 `;
 
 export const Title = styled.div`
@@ -24,7 +24,9 @@ export const Title = styled.div`
 `;
 
 export const Container = styled.div`
+  background-color: #e1b587;
   padding: 60px 0;
+  height: 100%;
   width: 100%;
 `;
 

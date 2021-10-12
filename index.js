@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const router = require("./routes");
@@ -7,7 +8,6 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const Sushi = require("./models/Sushi");
 const User = require("./models/User");
-require("dotenv").config();
 
 const app = express();
 

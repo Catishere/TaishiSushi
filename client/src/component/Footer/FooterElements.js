@@ -7,7 +7,7 @@ export const FooterEl = styled.footer`
   left: 0px;
   width: 100%;
   background-color: transparent;
-  color: #e1b486;
+  color: #9f3535;
   font-size: 1em;
   text-align: center;
   user-select: none;

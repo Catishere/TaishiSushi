@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Redirect } from "react-router";
 import { Context } from "../../../Context/UserContext";
 import url from "../../../utils/connectionUrl";
+import { store } from "react-notifications-component";
 import {
   FormTitle,
   Container,
@@ -35,7 +36,20 @@ const Register = ({ history }) => {
         setUser({ _id: response._id, username: response.username });
         history.push("/");
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) =>
+        store.addNotification({
+          title: "Failed to login",
+          message: err.message,
+          type: "danger",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 3000,
+          },
+        })
+      );
 
     if (user.username) <Redirect to="/" />;
   };
@@ -44,7 +58,9 @@ const Register = ({ history }) => {
     <Container>
       <FormStyled onSubmit={onRegisterSubmitHandler}>
         <FormTitle>Register</FormTitle>
-        <Label htmlFor="email">Email</Label>
+        <Label autocomplete="username" htmlFor="email">
+          Email
+        </Label>
         <Input name="email" onChange={(e) => setEmail(e.target.value.trim())} />
         <Label htmlFor="username">Username</Label>
         <Input

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import url from "../../../utils/connectionUrl";
+import { store } from "react-notifications-component";
 import {
   FormTitle,
   Container,
@@ -36,7 +37,18 @@ const Login = ({ history }) => {
         history.push("/");
       })
       .catch((err) => {
-        console.log(err);
+        store.addNotification({
+          title: "Failed to register",
+          message: err.message,
+          type: "danger",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 3000,
+          },
+        });
       });
   };
 
@@ -51,7 +63,9 @@ const Login = ({ history }) => {
     <Container>
       <FormStyled onSubmit={onLoginFormSubmitHandler}>
         <FormTitle>Login</FormTitle>
-        <Label htmlFor="email">Email</Label>
+        <Label autocomplete="username" htmlFor="email">
+          Email / Username
+        </Label>
         <Input name="email" onChange={updateEmail} />
         <Label htmlFor="password">Password</Label>
         <Input name="password" type="password" onChange={updatePassword} />
