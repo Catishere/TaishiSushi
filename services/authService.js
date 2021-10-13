@@ -7,10 +7,10 @@ const { SECRET, SALT_ROUNDS } = {
 
 const register = async ({ email, username, password, address }) => {
   const englishPattern = /^[a-zA-Z0-9 ,\.\-]+$/;
+  const noDollar = /^[^\$]+$/;
   const validEmail =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const validPassword =
-    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{9,}$/;
+  const validPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
   let currentUser = await User.findOne({ email });
 
@@ -21,15 +21,14 @@ const register = async ({ email, username, password, address }) => {
       message:
         "Username should be at least 4 characters long and should contains only english letters and digits.",
     };
-  if (!englishPattern.test(address))
+  if (!noDollar.test(address))
     throw {
-      message:
-        "Address should be at least 4 characters long and should contains only english letters and digits.",
+      message: "Address must not contain '$' symbols.",
     };
   if (!validPassword.test(password))
     throw {
       message:
-        "Password must be at least 9 characters long, must have at least 1 symbol, at least 1 uppercase and 1 lowercase.",
+        "Password must be at least 8 characters long, must have at least one letter and one number.",
     };
 
   password = await bcrypt.hash(password, 10);
