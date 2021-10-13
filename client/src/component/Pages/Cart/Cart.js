@@ -24,6 +24,7 @@ import {
   ProductDetail,
   ProductsContainer,
   ProductTitle,
+  Sum,
 } from "./CartStyles";
 
 const Cart = () => {
@@ -105,6 +106,15 @@ const Cart = () => {
             </ProductDetail>
           </Product>
         ))}
+        <Sum>
+          Total:{" "}
+          {cart
+            .reduce((sum, a) => {
+              return sum + a.sushi.price * a.qty;
+            }, 0)
+            .toFixed(2)}{" "}
+          BGN
+        </Sum>
       </ProductsContainer>
     </Container>
   );

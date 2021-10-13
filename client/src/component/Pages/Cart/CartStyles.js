@@ -19,6 +19,10 @@ export const Product = styled.div`
   border-top: solid 1px #1a1717;
 `;
 
+export const Sum = styled(Product)`
+  justify-content: flex-end;
+`;
+
 export const Title = styled.div`
   margin: 5px 10px;
 `;
