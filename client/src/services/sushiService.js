@@ -1,7 +1,7 @@
 import url from "../utils/connectionUrl";
 
 export const addSushi = async (sushiData) => {
-  const res = await fetch(`${url}/api/add`, {
+  const res = await fetch(`${url}/api/sushi/add`, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify(sushiData),

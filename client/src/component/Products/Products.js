@@ -28,7 +28,7 @@ const Products = ({ heading, match }) => {
   const dispatch = useDispatchCart();
 
   useEffect(() => {
-    fetch(`${url}/api/home`, {
+    fetch(`${url}/api/sushi/latest`, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
