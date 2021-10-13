@@ -9,13 +9,9 @@ export const FormTitle = styled.h2`
 
 export const Container = styled.div`
   position: relative;
-  padding-top: 60px;
   width: 100%;
   height: 100%;
-
   text-align: center;
-
-  font-family: Montserrat;
   font-style: light;
   font-weight: normal;
   background: linear-gradient(#141e30, #243b55);
@@ -68,19 +64,16 @@ export const Label = styled.label`
 
 export const SubmitBtn = styled.button`
   background: transparent;
-  padding: 1% 5% 1% 5%;
+  padding: 5px 10px;
   border: 1px solid white;
-  border-radius: 4px;
+  border-radius: 7px;
   text-align: center;
   cursor: pointer;
   color: white;
-  margin: 40px 10px 0 10px;
-  font-size: 16px;
+  margin: auto 20px;
+  font-size: 1rem;
 
   :hover {
-    background-color: #e1b486;
-    color: black;
-    width: 9rem;
-    height: 3rem;
+    background-color: #243b55;
   }
 `;
