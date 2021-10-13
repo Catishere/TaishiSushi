@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import url from "../../utils/connectionUrl";
+import { useDispatchCart } from "../../Context/CartContext";
+import {
+  addProductErrorNotification,
+  addProductNotification,
+} from "../../services/notificationService";
 
 import {
   ProductsContainer,
@@ -15,8 +20,12 @@ import {
   ProductButton,
 } from "./ProductsElements";
 
+import { pushToCart } from "../../services/sushiService";
+import { getUser } from "../../services/getUser";
+
 const Products = ({ heading, match }) => {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatchCart();
 
   useEffect(() => {
     fetch(`${url}/api/home`, {
@@ -29,6 +38,17 @@ const Products = ({ heading, match }) => {
       .then((res) => setProducts(res))
       .catch((error) => console.log(error));
   }, []);
+
+  const addToCart = async (product, qty) => {
+    const user = await getUser();
+    if (!user || !user._id) {
+      addProductErrorNotification();
+      return;
+    }
+    addProductNotification(product, qty);
+    dispatch({ type: "ADD", sushi: { sushi: product, qty } });
+    await pushToCart(product._id, user._id, qty);
+  };
 
   return (
     <div>
@@ -44,7 +64,9 @@ const Products = ({ heading, match }) => {
                   <ProductDesc>{product.description}</ProductDesc>
                   <ProductPortion>{product.portion} g</ProductPortion>
                   <ProductPrice>{product.price.toFixed(2)} BGN</ProductPrice>
-                  <ProductButton to="/menu/futomaki">Add to cart</ProductButton>
+                  <ProductButton onClick={addToCart.bind(this, product, 1)}>
+                    Add to cart
+                  </ProductButton>
                 </ProductInfo>
               </ProductCard>
             );

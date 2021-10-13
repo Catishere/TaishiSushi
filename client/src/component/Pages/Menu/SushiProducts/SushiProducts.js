@@ -2,10 +2,14 @@ import { useRef, useEffect, useContext, useState } from "react";
 import VanillaTilt from "vanilla-tilt";
 import { pushToCart } from "../../../../services/sushiService";
 
+import {
+  addProductErrorNotification,
+  addProductNotification,
+} from "../../../../services/notificationService";
+
 //Context
 import { useDispatchCart } from "../../../../Context/CartContext";
 import { Context } from "../../../../Context/UserContext";
-import { store } from "react-notifications-component";
 
 //Styles
 import {
@@ -43,24 +47,13 @@ export const SushiProducts = ({ _id, title, imageUrl, portion, price }) => {
   const dispatch = useDispatchCart();
 
   const addToCart = async (sushi, userId, qty) => {
-    addNotification(sushi, qty);
+    if (!userId) {
+      addProductErrorNotification();
+      return;
+    }
+    addProductNotification(sushi, qty);
     dispatch({ type: "ADD", sushi: { sushi, qty } });
     await pushToCart(sushi._id, userId, qty);
-  };
-
-  const addNotification = (sushi, currQty) => {
-    store.addNotification({
-      title: "You've added sushi to the cart.",
-      message: `${currQty} ${sushi.title} have been added.`,
-      type: "info",
-      insert: "top",
-      container: "bottom-right",
-      animationIn: ["animate__animated", "animate__fadeIn"],
-      animationOut: ["animate__animated", "animate__fadeOut"],
-      dismiss: {
-        duration: 3000,
-      },
-    });
   };
 
   //Tilt options

@@ -9,7 +9,7 @@ export const getUser = async () => {
       },
     });
     if (userobj.status === 200) return await userobj.json();
-    else localStorage.removeItem("user");
+    localStorage.removeItem("user");
   } /* 
   TODO JWT COOKIES SESSIONID ETC
   */
