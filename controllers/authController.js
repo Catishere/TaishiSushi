@@ -6,11 +6,9 @@ const { SECRET, COOKIE_NAME } = {
   COOKIE_NAME: process.env.REACT_APP_COOKIE_NAME,
 };
 const { register, login } = require("../services/authService");
-// TODO validations: check if the user exists..., hashing the password with bcrypt, save the user, create jwt token
-// TODO1 res.cookie(cookieName, token, {httpOnly: true}).json(res.user)
 
-router.get("/isAuthenticated", (req, res) => {
-  const user = req.user;
+router.get("/user/:userId", async (req, res) => {
+  const user = await User.findById(req.params.userId);
 
   if (user) {
     res.json(user);

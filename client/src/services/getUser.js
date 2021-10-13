@@ -1,9 +1,17 @@
 import url from "../utils/connectionUrl";
 export const getUser = async () => {
-  const userobj = await fetch(`${url}/api/auth/isAuthenticated`, {
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-  });
-  if (userobj.status !== 200) return JSON.parse(localStorage.getItem("user"));
-  const user = await userobj.json();
-  return user;
+  const savedUser = JSON.parse(localStorage.getItem("user"));
+  if (savedUser && savedUser._id) {
+    const userobj = await fetch(`${url}/api/auth/user/${savedUser._id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    if (userobj.status === 200) return await userobj.json();
+    else localStorage.removeItem("user");
+  } /* 
+  TODO JWT COOKIES SESSIONID ETC
+  */
+  return null;
 };
