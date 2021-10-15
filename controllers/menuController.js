@@ -4,43 +4,20 @@ const {
   getType,
   getDetails,
   getMultiDetails,
+  getCategories,
   addToCart,
   getUserCart,
   deleteFromCart,
 } = require("../services/sushiService");
 
-router.get("/sets", (req, res) => {
-  getType("Set").then((sushi) => {
-    res.json(sushi);
+router.get("/category", (req, res) => {
+  getCategories().then((c) => {
+    res.json(c);
   });
 });
 
-router.get("/uramaki", (req, res) => {
-  getType("Uramaki").then((sushi) => {
-    res.json(sushi);
-  });
-});
-
-router.get("/futomaki", (req, res) => {
-  getType("Futomaki").then((sushi) => {
-    res.json(sushi);
-  });
-});
-
-router.get("/hosomaki", (req, res) => {
-  getType("Hosomaki").then((sushi) => {
-    res.json(sushi);
-  });
-});
-
-router.get("/nigiri", (req, res) => {
-  getType("Nigiri").then((sushi) => {
-    res.json(sushi);
-  });
-});
-
-router.get("/sashimi", (req, res) => {
-  getType("Sashimi").then((sushi) => {
+router.get("/category/:category", (req, res) => {
+  getType(req.params.category).then((sushi) => {
     res.json(sushi);
   });
 });

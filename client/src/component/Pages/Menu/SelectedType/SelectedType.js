@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getSushiType } from "../../../../services/sushiService";
 import { SushiProducts } from "../SushiProducts/SushiProducts";
-import { Container } from "./SelectedTypeEl";
+import { Container, Background } from "./SelectedTypeEl";
 
 export const SelectedType = ({ match }) => {
   const typeOfSushi = match.params.type;
@@ -14,18 +14,21 @@ export const SelectedType = ({ match }) => {
   }, [typeOfSushi]);
 
   return (
-    <Container>
-      {sushi.map((each) => (
-        <SushiProducts
-          key={each._id}
-          _id={each._id}
-          title={each.title}
-          imageUrl={each.imageUrl}
-          portion={each.portion}
-          price={each.price}
-        />
-      ))}
-    </Container>
+    <>
+      <Background />
+      <Container>
+        {sushi.map((each) => (
+          <SushiProducts
+            key={each._id}
+            _id={each._id}
+            title={each.title}
+            imageUrl={each.imageUrl}
+            portion={each.portion}
+            price={each.price}
+          />
+        ))}
+      </Container>
+    </>
   );
 };
 

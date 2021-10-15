@@ -10,7 +10,15 @@ export const addSushi = async (sushiData) => {
 };
 
 export const getSushiType = async (sushiType) => {
-  const res = await fetch(`${url}/api/menu/${sushiType}`, {
+  const res = await fetch(`${url}/api/menu/category/${sushiType}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+  });
+  return await res.json();
+};
+
+export const getCategories = async () => {
+  const res = await fetch(`${url}/api/menu/category`, {
     method: "GET",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
   });

@@ -1,44 +1,33 @@
-import {
-  Background,
-  Container,
-  CardType1,
-  CardType2,
-  CardType3,
-  CardType4,
-  CardType5,
-  CardType6,
-  LinkTo,
-} from "./MenuElements";
+import { Background, Container, Card, LinkTo } from "./MenuElements";
+import { useState, useEffect } from "react";
+import { getCategories } from "../../../services/sushiService";
 
 export const Menu = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories()
+      .then((res) => setCategories(res))
+      .catch((error) => console.log(error.message));
+  }, []);
+
   return (
-    <Background>
+    <>
+      <Background />
       <Container>
-        <CardType6>
-          <LinkTo to="/menu/sets">Set</LinkTo>
-        </CardType6>
-
-        <CardType1>
-          <LinkTo to="/menu/futomaki">Futomaki</LinkTo>
-        </CardType1>
-
-        <CardType2>
-          <LinkTo to="/menu/hosomaki">Hosomaki</LinkTo>
-        </CardType2>
-
-        <CardType3>
-          <LinkTo to="/menu/nigiri">Nigiri</LinkTo>
-        </CardType3>
-
-        <CardType4>
-          <LinkTo to="/menu/uramaki">Uramaki</LinkTo>
-        </CardType4>
-
-        <CardType5>
-          <LinkTo to="/menu/sashimi ">Sashimi</LinkTo>
-        </CardType5>
+        {categories.map((category) => (
+          <Card
+            key={category._id}
+            style={{
+              backgroundImage: `url('${category.image}')`,
+              backgroundSize: "cover",
+            }}
+          >
+            <LinkTo to={category.endpoint}>{category.title}</LinkTo>
+          </Card>
+        ))}
       </Container>
-    </Background>
+    </>
   );
 };
 

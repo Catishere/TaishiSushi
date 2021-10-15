@@ -1,5 +1,6 @@
 const Sushi = require("../models/Sushi");
 const User = require("../models/User");
+const Category = require("../models/Category");
 
 async function addSushi(data) {
   return new Sushi(data).save();
@@ -15,6 +16,10 @@ async function getType(type) {
 
 async function getDetails(id) {
   return Sushi.findById(id);
+}
+
+async function getCategories() {
+  return Category.find();
 }
 
 async function getMultiDetails(ids) {
@@ -75,6 +80,7 @@ module.exports = {
   getNewest,
   getType,
   getDetails,
+  getCategories,
   getMultiDetails,
   addToCart,
   getUserCart,

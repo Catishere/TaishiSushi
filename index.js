@@ -6,8 +6,6 @@ const router = require("./routes");
 const { auth } = require("./midlewarse/auth");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-const Sushi = require("./models/Sushi");
-const User = require("./models/User");
 
 const app = express();
 

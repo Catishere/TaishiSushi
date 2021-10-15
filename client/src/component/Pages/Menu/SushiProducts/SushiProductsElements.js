@@ -29,8 +29,10 @@ export const CardDetailsContainer = styled.div`
 
 export const SetImage = styled.img`
   border-radius: 20px 20px 20px 0;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 500px;
+  max-height: 333px;
+  heigh: 100%;
+  width: 100%;
   z-index: 10;
 `;
 

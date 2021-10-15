@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const FooterEl = styled.footer`
   position: relative;
-  bottom: 20px;
-  height: 0;
-  left: 0px;
+  left: 0;
   width: 100%;
   background-color: transparent;
   color: #9f3535;
