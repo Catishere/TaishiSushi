@@ -30,6 +30,17 @@ export const Background = styled.div`
     no-repeat top right;
 `;
 
+export const BackgroundH = styled.div`
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left 0;
+  z-index: -1;
+  position: absolute;
+  margin: 0;
+  background-color: #100c0b;
+`;
+
 export const Container = styled.div`
   padding: 10px;
   display: flex;

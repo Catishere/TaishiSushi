@@ -17,6 +17,7 @@ import {
 } from "react-icons/ai";
 import { useCart, useDispatchCart } from "../../../Context/CartContext";
 
+import { BackgroundH } from "../Menu/MenuElements";
 import {
   Container,
   Title,
@@ -61,62 +62,65 @@ const Cart = () => {
     }
   };
   return (
-    <Container>
-      <Title>Shopping Cart</Title>
-      <ProductsContainer>
-        {cart.map((prod) => (
-          <Product key={prod.sushi._id}>
-            <img
-              src={prod.sushi.imageUrl}
-              alt="Product"
-              width="100"
-              height="70"
-            ></img>
-            <ProductTitle>{prod.sushi.title}</ProductTitle>
-            <ProductDetail>{"x" + prod.qty}</ProductDetail>
-            <ProductDetail>
-              {(prod.sushi.price * prod.qty).toFixed(2) + "BGN"}
-            </ProductDetail>
-            <ProductDetail>
-              <AiFillPlusCircle
-                onMouseOver={({ target }) => (target.style.color = "#3d8524")}
-                onMouseOut={({ target }) => (target.style.color = "#2e651a")}
-                style={{ color: "#2e651a", cursor: "pointer" }}
-                size="40px"
-                onClick={incrementHandler.bind(this, prod, user._id)}
-              />
-              <AiFillMinusCircle
-                onMouseOver={({ target }) => (target.style.color = "darkred")}
-                onMouseOut={({ target }) => (target.style.color = "#7e2525")}
-                style={{
-                  cursor: "pointer",
-                  display: prod.qty === 1 ? "none" : "inline-block",
-                }}
-                color={"#7e2525"}
-                size="40px"
-                onClick={decrementHandler.bind(this, prod, user._id)}
-              />
-              <AiFillDelete
-                onMouseOver={({ target }) => (target.style.color = "#444444")}
-                onMouseOut={({ target }) => (target.style.color = "#111111")}
-                style={{ color: "#111111", cursor: "pointer" }}
-                size="40px"
-                onClick={deleteHandler.bind(this, prod.sushi._id, user._id)}
-              />
-            </ProductDetail>
-          </Product>
-        ))}
-        <Sum>
-          Total:{" "}
-          {cart
-            .reduce((sum, a) => {
-              return sum + a.sushi.price * a.qty;
-            }, 0)
-            .toFixed(2)}{" "}
-          BGN
-        </Sum>
-      </ProductsContainer>
-    </Container>
+    <>
+      <BackgroundH />
+      <Container>
+        <Title>Shopping Cart</Title>
+        <ProductsContainer>
+          {cart.map((prod) => (
+            <Product key={prod.sushi._id}>
+              <img
+                src={prod.sushi.imageUrl}
+                alt="Product"
+                width="100"
+                height="70"
+              ></img>
+              <ProductTitle>{prod.sushi.title}</ProductTitle>
+              <ProductDetail>{"x" + prod.qty}</ProductDetail>
+              <ProductDetail>
+                {(prod.sushi.price * prod.qty).toFixed(2) + "BGN"}
+              </ProductDetail>
+              <ProductDetail>
+                <AiFillPlusCircle
+                  onMouseOver={({ target }) => (target.style.color = "#3d8524")}
+                  onMouseOut={({ target }) => (target.style.color = "#2e651a")}
+                  style={{ color: "#2e651a", cursor: "pointer" }}
+                  size="40px"
+                  onClick={incrementHandler.bind(this, prod, user._id)}
+                />
+                <AiFillMinusCircle
+                  onMouseOver={({ target }) => (target.style.color = "darkred")}
+                  onMouseOut={({ target }) => (target.style.color = "#7e2525")}
+                  style={{
+                    cursor: "pointer",
+                    display: prod.qty === 1 ? "none" : "inline-block",
+                  }}
+                  color={"#7e2525"}
+                  size="40px"
+                  onClick={decrementHandler.bind(this, prod, user._id)}
+                />
+                <AiFillDelete
+                  onMouseOver={({ target }) => (target.style.color = "#444444")}
+                  onMouseOut={({ target }) => (target.style.color = "#111111")}
+                  style={{ color: "#111111", cursor: "pointer" }}
+                  size="40px"
+                  onClick={deleteHandler.bind(this, prod.sushi._id, user._id)}
+                />
+              </ProductDetail>
+            </Product>
+          ))}
+          <Sum>
+            Total:{" "}
+            {cart
+              .reduce((sum, a) => {
+                return sum + a.sushi.price * a.qty;
+              }, 0)
+              .toFixed(2)}{" "}
+            BGN
+          </Sum>
+        </ProductsContainer>
+      </Container>
+    </>
   );
 };
 
